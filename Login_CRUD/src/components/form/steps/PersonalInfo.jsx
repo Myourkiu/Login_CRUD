@@ -1,7 +1,13 @@
+import '../../../styles/components/steps/personalinfo.sass'
 
 const PersonalInfo = () => {
   return (
-    <div>PersonalInfo</div>
+    <div className="personal-info-container">
+      <form>
+      <input type="text" placeholder="Insira seu nome" />
+      <input type="text" placeholder="Insira seu sobrenome"/>
+      </form>
+    </div>
   )
 }
 

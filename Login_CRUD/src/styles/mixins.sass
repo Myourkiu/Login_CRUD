@@ -1,0 +1,56 @@
+@import 'variables'
+
+
+@mixin button
+    border-radius: 7px
+    width: 100px
+    height: 40px
+    background-color: $button-color
+    font-weight: bold
+    outline: none
+    text-transform: uppercase
+    letter-spacing: 1px
+    color: #2b134b
+    border: none
+    border-radius: 7px
+    cursor: pointer
+    padding: 10px 5px
+    margin: 20px
+    box-shadow: 0px 10px 40px -12px #00ff8052
+    transition: .3s
+
+    &:hover
+        background: $button-hover
+
+    &:disabled
+        box-shadow: none
+        cursor: default
+        background: #6862753d
+        color: #352747
+
+
+@mixin center
+    margin: auto
+    align-items: center
+    justify-content: center
+
+
+@mixin info-container
+    height: 100%
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+@mixin inputs
+    margin: 10px
+    width: 80%
+    height: 3rem
+    padding-left: 1rem
+    font-size: 1rem
+    background: $input-color
+    color: $text-color
+    border: none
+    border-radius: 10px
+    box-shadow: $box-shadow

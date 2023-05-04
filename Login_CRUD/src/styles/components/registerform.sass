@@ -1,0 +1,41 @@
+@use '../mixins'
+@use '../variables'
+
+
+.form-container
+    width: 400px
+    height: 400px
+    background-color: variables.$card-color
+    border-radius: 8px
+    box-shadow: variables.$box-shadow
+    display: flex
+    flex-direction: column
+
+.form-container .header
+    flex: 20%
+    display: grid
+    place-items: center
+    letter-spacing: 3px
+    font-size: 1.2rem
+    margin-top: 1.5rem
+    font-weight: 800
+    color: variables.$h1-color
+
+.form-container .body
+    flex: 60%
+
+.form-container .footer
+    flex: 20%
+    display: flex
+    justify-content: center
+
+.form-container .footer button
+    @include mixins.button
+
+.form
+    width: 100%
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center

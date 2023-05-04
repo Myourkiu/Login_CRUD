@@ -1,0 +1,22 @@
+@import '../../mixins'
+@import '../../variables'
+    
+.personal-info-container
+    @include info-container
+
+.personal-info-container form
+    @include info-container
+
+.personal-info-container input
+    @include inputs
+    transition: .5s
+
+    &:focus
+        outline: 1px solid #00bb64
+
+    &::placeholder
+        color: #f0ffff94
+        font-size: .9rem
+    
+    
+        

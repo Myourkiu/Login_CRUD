@@ -9,13 +9,15 @@ import Login from './components/pages/Login'
 function App() {
   return (
     
-    <Router>
+    <div className="app">
+      <Router>
       <Routes>
         <Route path='/' element={<Registro/>}/>
         <Route path='/register' element={<Registro/>}/>
         <Route path='/info' element={<Info/>}/>
       </Routes>
     </Router>
+    </div>
 
   )
 }
