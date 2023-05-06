@@ -1,4 +1,5 @@
 import {React, useState} from 'react'
+import { Link } from 'react-router-dom'
 
 import PersonalInfo from './steps/PersonalInfo.jsx'
 import ContactInfo from './steps/ContactInfo.jsx'
@@ -26,13 +27,19 @@ const RegisterForm = () => {
 
   return (
     <div className="form">
-        <div className="progressbar"></div>
+        <div className="progressbar">
+          <div style={{width: page === 0 ? '3%' : page === 1 ? '50%' : '100%'}}></div>
+        </div>
         <div className="form-container">
             <div className="header">
               <h1>{FormTitles[page]}</h1>
             </div>
             <div className="body">
               {PageDisplay()}
+              <div className="have-account">
+                <Link to='/'>
+                  <a>Já possui uma conta?</a></Link>
+              </div>
             </div>
             <div className="footer">
               <div className="btns">

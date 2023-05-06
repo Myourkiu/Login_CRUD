@@ -44,13 +44,20 @@
     align-items: center
 
 @mixin inputs
-    margin: 10px
-    width: 80%
+    margin-bottom: 10px
+    width: 90%
     height: 3rem
-    padding-left: 1rem
+    padding: 0 2rem 0 1rem
     font-size: 1rem
     background: $input-color
     color: $text-color
     border: none
-    border-radius: 10px
+    border-radius: 0 10px 10px 0
     box-shadow: $box-shadow
+
+@mixin svg
+    width: 2.3rem
+    height: 3rem
+    padding: 10px
+    background-color: $input-color
+    border-radius: 10px 0 0 10px

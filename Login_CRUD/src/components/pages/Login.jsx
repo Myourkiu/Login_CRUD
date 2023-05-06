@@ -1,6 +1,10 @@
+import SVG from '../../img/image.svg'
+
 const Login = () => {
   return (
-    k
+    <div className='form'>
+      
+    </div>
   )
 }
 

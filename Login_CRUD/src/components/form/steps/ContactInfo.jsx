@@ -1,11 +1,19 @@
-import React from 'react'
+import '../../../styles/components/steps/contactinfo.sass'
+
+import {FaInbox, FaPhone} from 'react-icons/fa'
 
 const ContactInfo = () => {
   return (
-    <div className="personal-info-container">
+    <div className="contact-info-container">
       <form>
-      <input type="email" placeholder="Insira seu email" />
-      <input type="text" placeholder="Insira seu celular"/>
+      <div className="info">
+        <FaInbox/>
+        <input type="email" placeholder="Insira seu email" />
+      </div>
+      <div className="info">
+        <FaPhone/>
+        <input type="text" placeholder="Insira seu celular"/>
+      </div>
       </form>
     </div>
   )

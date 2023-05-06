@@ -24,10 +24,25 @@
 .form-container .body
     flex: 60%
 
+.form-container .body .have-account
+    width: 40%
+    margin: auto
+
+.form-container .body a
+    display: flex
+    justify-content: center
+    color: variables.$h1-color
+    text-decoration: none
+    
+    &:hover
+        text-decoration: underline
+            
+
 .form-container .footer
     flex: 20%
     display: flex
     justify-content: center
+    margin-top: 2.4rem
 
 .form-container .footer button
     @include mixins.button
@@ -39,3 +54,17 @@
     flex-direction: column
     justify-content: center
     align-items: center
+
+.progressbar
+    width: 400px
+    height: 10px
+    background-color: white
+    margin-bottom: 50px
+    border-radius: 10px
+
+.progressbar div
+    width: 33.3%
+    height: 100%
+    border-radius: 10px
+    background-color: #00bb64
+    transition: .5s
