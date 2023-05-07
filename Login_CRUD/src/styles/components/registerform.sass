@@ -29,15 +29,8 @@
     margin: auto
 
 .form-container .body a
-    display: flex
-    justify-content: center
-    color: variables.$h1-color
-    text-decoration: none
-    
-    &:hover
-        text-decoration: underline
+    @include mixins.link
             
-
 .form-container .footer
     flex: 20%
     display: flex

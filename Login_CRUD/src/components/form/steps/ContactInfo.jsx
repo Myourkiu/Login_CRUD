@@ -8,7 +8,7 @@ const ContactInfo = () => {
       <form>
       <div className="info">
         <FaInbox/>
-        <input type="email" placeholder="Insira seu email" />
+        <input type="email" placeholder="Insira seu e-mail" />
       </div>
       <div className="info">
         <FaPhone/>
