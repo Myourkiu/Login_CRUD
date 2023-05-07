@@ -26,7 +26,7 @@ const LoginForm = () => {
               <input type='password' placeholder='Insira sua senha'/>
             </div>
 
-            <Link to='/register'><a>Não possui uma conta? Crie agora!</a></Link>
+            <Link to='/register'><a>Não possui uma conta? Registre-se</a></Link>
 
             <button>Login</button>
           </div>

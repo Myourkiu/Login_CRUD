@@ -38,7 +38,7 @@ const RegisterForm = () => {
               {PageDisplay()}
               <div className="have-account">
                 <Link to='/'>
-                  <a>Já possui uma conta?</a></Link>
+                  <a>Já possui uma conta? Entre</a></Link>
               </div>
             </div>
             <div className="footer">
