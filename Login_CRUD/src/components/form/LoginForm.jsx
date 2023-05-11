@@ -1,6 +1,6 @@
 import Image from '../../img/image.svg'
 
-import {FaLock, FaInbox} from 'react-icons/fa'
+import {FaLock, FaAt} from 'react-icons/fa'
 
 import '../../styles/components/loginform.sass'
 import { Link } from 'react-router-dom'
@@ -17,7 +17,7 @@ const LoginForm = () => {
           <h1>Login</h1>
           <div className='form'>
             <div className="info">
-              <FaInbox/>
+              <FaAt/>
               <input type="text" placeholder='Insira seu e-mail'/>
             </div>
 

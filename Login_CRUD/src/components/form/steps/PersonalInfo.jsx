@@ -1,17 +1,17 @@
 import '../../../styles/components/steps/personalinfo.sass'
 
-import {FaUserAlt} from 'react-icons/fa'
+import {FaRegUser} from 'react-icons/fa'
 
 const PersonalInfo = () => {
   return (
     <div className="personal-info-container">
       <form>
       <div className="info">
-        <FaUserAlt/>
+        <FaRegUser/>
         <input type="text" placeholder="Insira seu nome" />
       </div>
       <div className="info">
-        <FaUserAlt/>
+        <FaRegUser/>
         <input type="text" placeholder="Insira seu sobrenome"/>
       </div>
       </form>
