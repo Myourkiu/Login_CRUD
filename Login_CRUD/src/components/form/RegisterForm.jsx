@@ -10,6 +10,14 @@ import '../../styles/components/registerform.sass'
 const RegisterForm = () => {
 
     const [page, setPage] = useState(0)
+    const [formData, setFormData] = useState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      password: "",
+      confirmPassword: ""
+    })
 
     const FormTitles = ['Dados Pessoais', 'Contato', 'Senha']
 

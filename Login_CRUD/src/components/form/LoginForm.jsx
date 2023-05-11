@@ -15,7 +15,7 @@ const LoginForm = () => {
       <div className="right-login">
         <div className="card-login">
           <h1>Login</h1>
-          <div className='form'>
+          <form className='form'>
             <div className="info">
               <FaAt/>
               <input type="text" placeholder='Insira seu e-mail'/>
@@ -29,7 +29,7 @@ const LoginForm = () => {
             <Link to='/register'><a>Não possui uma conta? Registre-se</a></Link>
 
             <button>Login</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
