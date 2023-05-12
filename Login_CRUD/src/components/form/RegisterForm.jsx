@@ -23,13 +23,13 @@ const RegisterForm = () => {
 
     function PageDisplay() {
       if(page === 0){
-        return <PersonalInfo/>
+        return <PersonalInfo formData={formData} setFormData={setFormData}/>
       }
       else if(page === 1){
-        return <ContactInfo/>
+        return <ContactInfo formData={formData} setFormData={setFormData}/>
       }
       else if(page === 2){
-        return <PassCreate/>
+        return <PassCreate formData={formData} setFormData={setFormData}/>
       }
     }
 
@@ -56,8 +56,9 @@ const RegisterForm = () => {
               onClick={() => {setPage((currPage)  => currPage - 1)}}
               className='btn'>Voltar</button>
 
+              
+
               {page < 2 && (<button
-              disabled={page == FormTitles.length - 1} 
               onClick={() => {setPage((currPage) => currPage + 1)}}>Avançar</button>)}
 
               {page === 2 && (
