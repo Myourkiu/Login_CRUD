@@ -23,14 +23,49 @@ const RegisterForm = () => {
 
     function PageDisplay() {
       if(page === 0){
-        return <PersonalInfo formData={formData} setFormData={setFormData}/>
+        return <PersonalInfo 
+        formData={formData} 
+        setFormData={setFormData}
+        />
       }
+
       else if(page === 1){
-        return <ContactInfo formData={formData} setFormData={setFormData}/>
+        return <ContactInfo 
+        formData={formData} 
+        setFormData={setFormData}/>
       }
       else if(page === 2){
-        return <PassCreate formData={formData} setFormData={setFormData}/>
+        return <PassCreate 
+        formData={formData} 
+        setFormData={setFormData}/>
       }
+    }
+
+    const ValidatePersonalInfo = () => {
+      if(3 < formData.firstName.length && formData.lastName.length > 3){
+        setPage((currPage) => currPage + 1)}
+      else{
+        return} 
+    }
+
+    function emailValidate() {
+      const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g
+
+      if(!regEx.test(formData.email)){
+        return false
+      }else return true
+    }
+
+    const ValidateContactInfo = () => { 
+      emailValidate()
+      if(formData.phone.length == 11 && emailValidate(true)){
+        setPage((currPage) => currPage + 1)
+      }
+    }
+  
+
+    const ValidatePassCreate = () => {
+      
     }
 
   return (
@@ -46,24 +81,19 @@ const RegisterForm = () => {
               {PageDisplay()}
               <div className="have-account">
                 <Link to='/'>
-                  <a>Já possui uma conta? Entre</a></Link>
+                  Já possui uma conta? Entre</Link>
               </div>
             </div>
             <div className="footer">
               <div className="btns">
               <button 
               disabled={page == 0}
-              onClick={() => {setPage((currPage)  => currPage - 1)}}
+              onClick={() => {setPage((currPage) => currPage - 1)}}
               className='btn'>Voltar</button>
 
-              
-
-              {page < 2 && (<button
-              onClick={() => {setPage((currPage) => currPage + 1)}}>Avançar</button>)}
-
-              {page === 2 && (
-                <button>Concluir</button>
-              )}
+              {page == 0 && (<button onClick={ValidatePersonalInfo}>Avançar</button>)}
+              {page == 1 && (<button onClick={ValidateContactInfo}>Avançar</button>)}
+              {page == 2 && (<button onClick={ValidatePassCreate}>Concluir</button>)}
               </div>
             </div>
         </div>
