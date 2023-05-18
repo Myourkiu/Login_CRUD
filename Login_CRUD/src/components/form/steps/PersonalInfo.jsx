@@ -12,7 +12,7 @@ const PersonalInfo = ({ formData, setFormData}) => {
     const regExResult = e.target.value.replace(/[^a-z]/gi, '')
 
     setFormData({...formData, firstName: regExResult})
-    if(formData.firstName.length < 3 || formData.firstName == ''){
+    if(formData.firstName.length < 2 || formData.firstName == ''){
       setMsgName('O nome precisa ter no mínimo 3 caracteres!')
     }else 
     setMsgName('')
@@ -23,7 +23,7 @@ const PersonalInfo = ({ formData, setFormData}) => {
 
     setFormData({...formData, lastName: result})
 
-    if(formData.lastName.length < 3 || formData.lastName == ''){
+    if(formData.lastName.length < 2 || formData.lastName == ''){
       setMsgLastName('O sobrenome precisa ter no mínimo 3 caracteres!')
     }else setMsgLastName('')
   }

@@ -42,7 +42,7 @@ const RegisterForm = () => {
     }
 
     const ValidatePersonalInfo = () => {
-      if(3 < formData.firstName.length && formData.lastName.length > 3){
+      if(2 < formData.firstName.length && formData.lastName.length > 2){
         setPage((currPage) => currPage + 1)}
       else{
         return} 

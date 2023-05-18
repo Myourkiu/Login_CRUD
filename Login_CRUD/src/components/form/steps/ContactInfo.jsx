@@ -34,8 +34,9 @@ console.log(formData)
       <form>
       <div className="info">
         <FaAt/>
-        <input type="email" 
-        placeholder="Insira seu e-mail" 
+        <input type="email"
+        
+        placeholder="Insira seu e-mail"
         value={formData.email}
         onChange={emailValidate}/>
       </div>
