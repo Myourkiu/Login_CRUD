@@ -3,9 +3,56 @@ import Image from '../../img/image.svg'
 import {FaLock, FaAt} from 'react-icons/fa'
 
 import '../../styles/components/loginform.sass'
+
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 const LoginForm = () => {
+
+  const [results, setResults] = useState([])
+  const [msgEmail, setMsgEmail] = useState('')
+  const [msgPassword, setMsgPassword] = useState('')
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
+
+    useEffect(() => {
+        fetch('http://localhost:5000/users',{
+          method: 'GET',
+          headers:{
+            'Content-Type': 'application/json',
+          }
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+          setResults(data)
+        })
+        .catch((err) => console.log(err))
+    },[])
+
+    const Verify = (e) => {
+      e.preventDefault()
+
+      if(results.length > 0){
+
+        const user = results.find(u => u.email == formData.email)
+        
+        if(user == undefined){
+          setMsgEmail('O email não existe!')
+        }else {setMsgEmail('')
+      
+      }
+
+        if(formData.password !== user.password){
+          setMsgPassword('Senha incorreta!')
+          console.log('deu rui patrão')
+        }else {setMsgPassword('')
+      console.log('foi porra')
+      }
+      }
+    }
+    
   return (
     <div className='main-login'>
       <div className="left-login">
@@ -18,17 +65,29 @@ const LoginForm = () => {
           <form className='form'>
             <div className="info">
               <FaAt/>
-              <input type="text" placeholder='Insira seu e-mail'/>
+              <input type="text"
+               placeholder='Insira seu e-mail'
+               onChange={(e) => {setFormData({...formData, email: e.target.value})}}
+               value={formData.email}
+               />
+               
             </div>
+            
+            <p>{msgEmail}</p>
 
             <div className="info">
               <FaLock/>
-              <input type='password' placeholder='Insira sua senha'/>
+              <input type='password' 
+              placeholder='Insira sua senha'
+              onChange={(e) => {setFormData({...formData, password: e.target.value})}}
+              value={formData.password}
+              />
             </div>
+            <p>{msgPassword}</p>
 
             <Link to='/register'>Não possui uma conta? Registre-se</Link>
 
-            <button>Login</button>
+            <button onClick={Verify}>Login</button>
           </form>
         </div>
       </div>

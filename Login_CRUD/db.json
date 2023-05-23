@@ -1,5 +1,40 @@
 {
   "users": [
-      
+    {
+      "firstName": "Pedro",
+      "lastName": "Figueiredo",
+      "email": "pedro@gmail.com",
+      "phone": "21987883398",
+      "password": "321321321",
+      "confirmPassword": "321321321",
+      "id": 2
+    },
+    {
+      "firstName": "teste",
+      "lastName": "teste",
+      "email": "teste@gmail.com",
+      "phone": "32894321328",
+      "password": "741852963",
+      "confirmPassword": "741852963",
+      "id": 3
+    },
+    {
+      "firstName": "tes",
+      "lastName": "test",
+      "email": "t@gmail.com",
+      "phone": "12312312312",
+      "password": "321654987",
+      "confirmPassword": "321654987",
+      "id": 4
+    },
+    {
+      "firstName": "oioi",
+      "lastName": "oioi",
+      "email": "oi@gmail.com",
+      "phone": "12312312312",
+      "password": "321321321",
+      "confirmPassword": "321321321",
+      "id": 5
+    }
   ]
 }

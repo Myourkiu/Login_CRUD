@@ -8,7 +8,7 @@ const Info = () => {
   return (
     <div className='page'>
       <div className='navbar'>
-        <Link to='/'><a><FiLogOut/></a></Link>
+        <Link to='/'><FiLogOut/></Link>
       </div>
       <div className='header'>
         <h1>User's name</h1>

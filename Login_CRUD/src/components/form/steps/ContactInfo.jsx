@@ -28,7 +28,6 @@ const ContactInfo = ({ formData, setFormData}) => {
       }else setMsgPhone('')
     }
 
-console.log(formData)
   return (
     <div className="contact-info-container">
       <form>

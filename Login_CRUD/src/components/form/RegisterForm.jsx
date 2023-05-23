@@ -1,5 +1,5 @@
 import {React, useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import PersonalInfo from './steps/PersonalInfo.jsx'
 import ContactInfo from './steps/ContactInfo.jsx'
@@ -20,6 +20,8 @@ const RegisterForm = () => {
     })
 
     const FormTitles = ['Dados Pessoais', 'Contato', 'Senha']
+
+    const navigate = useNavigate()
 
     function PageDisplay() {
       if(page === 0){
@@ -60,12 +62,29 @@ const RegisterForm = () => {
       emailValidate()
       if(formData.phone.length == 11 && emailValidate(true)){
         setPage((currPage) => currPage + 1)
-      }
+      }else return
     }
   
 
     const ValidatePassCreate = () => {
-      
+      if(formData.password > 7 &&  formData.password === formData.confirmPassword){
+        createUser(formData)
+      }else return 
+    }
+
+    function createUser(user) {
+      fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      })
+      .then((resp) => resp.json())
+      .then((data) => {
+        navigate(`/info`)
+      })
+      .catch((err) => console.log(err))
     }
 
   return (
