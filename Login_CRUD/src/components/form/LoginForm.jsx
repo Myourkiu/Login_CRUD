@@ -38,18 +38,22 @@ const LoginForm = () => {
 
         const user = results.find(u => u.email == formData.email)
         
+
+        if(formData.email == ''){
+          setMsgEmail('Preencha este campo')
+        }
+        
+        if(formData.password == ''){
+          setMsgPassword('Preencha este campo')
+        }
+
         if(user == undefined){
           setMsgEmail('O email não existe!')
-        }else {setMsgEmail('')
-      
-      }
+        }else {setMsgEmail('')}
 
         if(formData.password !== user.password){
           setMsgPassword('Senha incorreta!')
-          console.log('deu rui patrão')
-        }else {setMsgPassword('')
-      console.log('foi porra')
-      }
+        }else {setMsgPassword('')}
       }
     }
     
