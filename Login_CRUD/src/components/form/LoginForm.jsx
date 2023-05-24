@@ -4,7 +4,7 @@ import {FaLock, FaAt} from 'react-icons/fa'
 
 import '../../styles/components/loginform.sass'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 const LoginForm = () => {
@@ -16,6 +16,7 @@ const LoginForm = () => {
     email: '',
     password: ''
   })
+  const navigate = useNavigate()
 
     useEffect(() => {
         fetch('http://localhost:5000/users',{
@@ -35,10 +36,8 @@ const LoginForm = () => {
       e.preventDefault()
 
       if(results.length > 0){
-
         const user = results.find(u => u.email == formData.email)
         
-
         if(formData.email == ''){
           setMsgEmail('Preencha este campo')
         }
@@ -53,7 +52,10 @@ const LoginForm = () => {
 
         if(formData.password !== user.password){
           setMsgPassword('Senha incorreta!')
-        }else {setMsgPassword('')}
+        }else {
+          setMsgPassword('')
+          navigate('/info', {state: user})
+        }
       }
     }
     

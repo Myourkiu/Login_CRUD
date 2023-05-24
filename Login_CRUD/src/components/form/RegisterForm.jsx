@@ -82,7 +82,7 @@ const RegisterForm = () => {
       })
       .then((resp) => resp.json())
       .then((data) => {
-        navigate(`/info`)
+        navigate(`/`)
       })
       .catch((err) => console.log(err))
     }
