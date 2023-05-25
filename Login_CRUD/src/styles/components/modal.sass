@@ -1,0 +1,48 @@
+@use '../variables'
+@use '../mixins'
+
+.shadow
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: rgb(0, 0, 0, 0.5)
+    z-index: 100
+
+.shadow .modal
+    position: fixed
+    top: 50%
+    left: 50%
+    width: 50%
+    transform: translate(-50%, -50%)
+    padding: 50px 20px 20px 
+    background: variables.$card-color
+    border-radius: 8px
+    
+
+.shadow .modal .buttons
+    width: 100%
+    display: flex
+    justify-content: flex-end
+
+    .delete
+        background: #ff1313
+        box-shadow: 0px 10px 40px -12px #ff000048
+
+        &:hover
+            background: #a30404
+
+.shadow .modal p
+    text-align: center
+    font-size: 1.2rem
+    margin-bottom: 2rem
+
+
+.shadow .modal button
+    @include mixins.button
+    margin-bottom: 0
+    
+
+
+

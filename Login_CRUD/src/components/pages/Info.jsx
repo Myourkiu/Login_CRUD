@@ -1,16 +1,18 @@
 import { FiLogOut } from 'react-icons/fi'
 
 import {Link, useLocation, useNavigate} from 'react-router-dom'
-const [openModal, setOpenModal] = useState(false)
+import { useState } from 'react'
 
 import '../../styles/components/info.sass'
 import Modal from '../Modal'
+
 
 const Info = () => {
 
   const location = useLocation()
   const data = location.state
   const navigate = useNavigate()
+  const [openModal, setOpenModal] = useState(false)
 
   function removeUser(id) {
      fetch(`http://localhost:5000/users/${id}`,{
@@ -47,10 +49,18 @@ const Info = () => {
       </div>
       <div className="footer">
         <button className='edit'>Editar</button>
-        <button className='delete' onClick={remove}>Deletar</button>
+        <button className='delete' onClick={() => {setOpenModal(true)}}>Deletar</button>
       </div>
+          <Modal isOpen={openModal}>
+            <p>Você realmente deseja excluir sua conta?</p>
+
+            <div className="buttons">
+              <button onClick={() => setOpenModal(!openModal)}>Cancelar</button>
+              <button className='delete' onClick={remove}>Deletar</button>
+            </div>
+          </Modal>
+
       </div>
-    </div>
   )
 }
 
