@@ -1,5 +1,6 @@
 import {React, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import bcrypt from 'bcryptjs'
 
 import PersonalInfo from './steps/PersonalInfo.jsx'
 import ContactInfo from './steps/ContactInfo.jsx'
@@ -67,8 +68,18 @@ const RegisterForm = () => {
   
 
     const ValidatePassCreate = () => {
+
+      const hashedPassword = bcrypt.hashSync(formData.password, 10)
+
       if(formData.password > 7 &&  formData.password === formData.confirmPassword){
-        createUser(formData)
+
+        createUser({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          password: hashedPassword
+        })
       }else return 
     }
 

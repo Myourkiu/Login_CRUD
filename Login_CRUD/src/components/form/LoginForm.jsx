@@ -6,6 +6,7 @@ import '../../styles/components/loginform.sass'
 
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import bcrypt from 'bcryptjs'
 
 const LoginForm = () => {
 
@@ -51,12 +52,17 @@ const LoginForm = () => {
           setMsgEmail('O email não existe!')
         }else {setMsgEmail('')}
 
-        if(formData.password !== user.password){
-          setMsgPassword('Senha incorreta!')
-        }else {
-          setMsgPassword('')
-          navigate(`/info/${user.id}` , {state: user})
-        }
+        bcrypt.compare(formData.password, user.password, function(err, isMatch) {
+          if(err){
+            console.log(err)
+          }else if(!isMatch){
+            setMsgPassword('Senha incorreta!')
+          }else{
+            setMsgPassword('')
+            navigate(`/info/${user.id}` , {state: user})
+            
+          }
+        })
       }
     }
 

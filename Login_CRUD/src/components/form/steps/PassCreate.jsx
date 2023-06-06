@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+
 import '../../../styles/components/steps/passcreate.sass'
 
 import {FaLock} from 'react-icons/fa'
@@ -8,6 +9,7 @@ const PassCreate = ({ formData, setFormData }) => {
   const [msgConfirm, setMsgConfirm] = useState('')
 
   const passwordValidate = (e) => {
+
     if(formData.password.length < 7){
       setMsgPass('Sua senha precisa ter no mínimo 8 caracteres.')
     }else setMsgPass('')
@@ -33,7 +35,8 @@ const PassCreate = ({ formData, setFormData }) => {
                 e.preventDefault() 
                 return false}}
                 value={formData.password}
-                onChange={passwordValidate} />
+                onChange={passwordValidate}
+                 />
         </div>
         <p>{msgPass}</p>
         <div className='info'>
@@ -44,7 +47,8 @@ const PassCreate = ({ formData, setFormData }) => {
           e.preventDefault() 
           return false}}
         value={formData.confirmPassword}
-        onChange={confirmValidate}/>
+        onChange={confirmValidate}
+        />
         </div>
         <p>{msgConfirm}</p>
       </form>
