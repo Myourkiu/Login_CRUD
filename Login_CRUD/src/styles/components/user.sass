@@ -1,0 +1,35 @@
+@use '../mixins'
+@use '../variables'
+
+
+.container
+    width: 100vw
+    height: 100vh
+    position: relative
+    overflow: hidden
+
+.container .form-container
+    background: variables.$bg-color
+    display: flex
+    margin: auto
+    align-items: center
+    justify-content: center
+    box-shadow: none
+    height: 95%
+
+
+.container .form
+    width: 350px
+    height: 400px
+    border-radius: 8px
+    background: variables.$card-color
+
+
+.navbar
+    width: 100vw
+
+.form button
+    width: 11rem
+
+.form p
+    margin-left: 2rem

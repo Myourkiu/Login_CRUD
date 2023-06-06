@@ -18,6 +18,7 @@ const LoginForm = () => {
   })
   const navigate = useNavigate()
 
+ 
     useEffect(() => {
         fetch('http://localhost:5000/users',{
           method: 'GET',
@@ -54,10 +55,11 @@ const LoginForm = () => {
           setMsgPassword('Senha incorreta!')
         }else {
           setMsgPassword('')
-          navigate('/info', {state: user})
+          navigate(`/info/${user.id}` , {state: user})
         }
       }
     }
+
     
   return (
     <div className='main-login'>

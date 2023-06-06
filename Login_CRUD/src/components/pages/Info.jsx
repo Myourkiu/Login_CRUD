@@ -48,7 +48,7 @@ const Info = () => {
         <p>Celular: {data.phone}</p>
       </div>
       <div className="footer">
-        <button className='edit'>Editar</button>
+        <button className='edit' onClick={() => {navigate(`/user/${data.id}/edit`)}}>Editar</button>
         <button className='delete' onClick={() => {setOpenModal(true)}}>Deletar</button>
       </div>
           <Modal isOpen={openModal}>

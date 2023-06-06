@@ -5,6 +5,7 @@ import './styles/components/app.sass'
 import Registro from './components/pages/Registro.jsx'
 import Info from './components/pages/Info'
 import Login from './components/pages/Login'
+import User from './components/pages/User'
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/register' element={<Registro/>}/>
-        <Route path='/info' element={<Info/>}/>
+        <Route path='/info/:id' element={<Info/>}/>
+        <Route path='/user/:id/edit' element={<User/>}/>
       </Routes>
     </Router>
     </div>

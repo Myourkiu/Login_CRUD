@@ -5,7 +5,7 @@ import '../../../styles/components/steps/contactinfo.sass'
 
 import {FaAt, FaPhone} from 'react-icons/fa'
 
-const ContactInfo = ({ formData, setFormData}) => {
+const ContactInfo = ({ formData, setFormData }) => {
 
     const [msgEmail, setMsgEmail] = useState('')
     const [msgPhone, setMsgPhone] = useState('')
