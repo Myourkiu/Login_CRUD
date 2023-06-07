@@ -19,7 +19,6 @@ const LoginForm = () => {
   })
   const navigate = useNavigate()
 
- 
     useEffect(() => {
         fetch('http://localhost:5000/users',{
           method: 'GET',

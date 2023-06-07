@@ -3,10 +3,18 @@
     {
       "firstName": "Pedro",
       "lastName": "Figueiredo",
-      "email": "pedrofigs@gmail.com",
+      "email": "pedro@gmail.com",
       "phone": "21987883398",
       "password": "$2a$10$Pj/1Vy2UGmNp3PN1nfxaE.9WE8pmfaOWttxTI9LA4bWopW8.Oo2uG",
       "id": 1
+    },
+    {
+      "firstName": "Pedro",
+      "lastName": "Teste",
+      "email": "pedrofigs@gmail.com",
+      "phone": "21987883397",
+      "password": "$2a$10$9Ck3XPxDwTpsqtVHaVB7NeOQBlZJD4csrJAaJ/hWPun.D7PM6hq5.",
+      "id": 2
     }
   ]
 }

@@ -67,7 +67,6 @@ const User = () => {
     const regExResult = e.target.value.replace(/[^a-z]/gi, "");
 
     setUser({ ...user, firstName: regExResult });
-    console.log(verify);
     if (!(e.target.value.length > 2)) {
       setMsg({
         ...msg,
@@ -126,8 +125,11 @@ const User = () => {
     e.preventDefault();
 
     if (
-      (verify.firstName, verify.lastName, verify.email, verify.phone) === true
-    ) {
+      verify.firstName === true && 
+      verify.lastName === true && 
+      verify.email === true && 
+      verify.phone === true
+    ){
       editPost(user);
     }
   }

@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import bcrypt from 'bcryptjs'
 
@@ -21,8 +21,23 @@ const RegisterForm = () => {
     })
 
     const FormTitles = ['Dados Pessoais', 'Contato', 'Senha']
+    const [results, setResults] = useState([])
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+      fetch('http://localhost:5000/users',{
+        method: 'GET',
+        headers:{
+          'Content-Type': 'application/json',
+        }
+      })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setResults(data)
+      })
+      .catch((err) => console.log(err))
+  }, [])
 
     function PageDisplay() {
       if(page === 0){
@@ -60,8 +75,15 @@ const RegisterForm = () => {
     }
 
     const ValidateContactInfo = () => { 
+      const emailVerify = results.find(data => data.email == formData.email)
+      const phoneVerify = results.find(data => data.phone == formData.phone)
+
       emailValidate()
-      if(formData.phone.length == 11 && emailValidate(true)){
+      
+      if(formData.phone.length == 11 
+        && emailValidate(true) 
+        && emailVerify == undefined 
+        && phoneVerify == undefined){
         setPage((currPage) => currPage + 1)
       }else return
     }
