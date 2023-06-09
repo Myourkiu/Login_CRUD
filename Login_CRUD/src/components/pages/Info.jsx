@@ -23,7 +23,7 @@ const Info = () => {
      })
      .then((resp) => resp.json())
      .then((data) => {
-      navigate('/')
+      navigate('/Login_CRUD')
      })
      .catch((err) => console.log(err))
   }
