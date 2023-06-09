@@ -115,7 +115,7 @@ const RegisterForm = () => {
       })
       .then((resp) => resp.json())
       .then((data) => {
-        navigate(`/Login_CRUD`)
+        navigate(`/`)
       })
       .catch((err) => console.log(err))
     }
@@ -132,7 +132,7 @@ const RegisterForm = () => {
             <div className="body">
               {PageDisplay()}
               <div className="have-account">
-                <Link to='/Login_CRUD'>
+                <Link to='/'>
                   Já possui uma conta? Entre</Link>
               </div>
             </div>
