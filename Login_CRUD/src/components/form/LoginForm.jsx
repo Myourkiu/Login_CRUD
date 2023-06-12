@@ -45,23 +45,23 @@ const LoginForm = () => {
         
         if(formData.password == ''){
           setMsgPassword('Preencha este campo')
+        }else{
+          bcrypt.compare(formData.password, user.password, function(err, isMatch) {
+            if(err){
+              console.log(err)
+            }else if(!isMatch){
+              setMsgPassword('Senha incorreta!')
+            }else{
+              setMsgPassword('')
+              navigate(`/info/${user.id}` , {state: user})
+              
+            }
+          })
         }
 
         if(user == undefined){
           setMsgEmail('O email não existe!')
         }else {setMsgEmail('')}
-
-        bcrypt.compare(formData.password, user.password, function(err, isMatch) {
-          if(err){
-            console.log(err)
-          }else if(!isMatch){
-            setMsgPassword('Senha incorreta!')
-          }else{
-            setMsgPassword('')
-            navigate(`/info/${user.id}` , {state: user})
-            
-          }
-        })
       }
     }
 

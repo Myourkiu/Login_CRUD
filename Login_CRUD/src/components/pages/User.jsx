@@ -20,6 +20,9 @@ const User = () => {
     phone: "",
     id: "",
   });
+
+  const [compareUser, setCompareUser] = useState({});
+
   const [msg, setMsg] = useState({
     firstName: "",
     lastName: "",
@@ -47,6 +50,20 @@ const User = () => {
       .catch((err) => console.log(err));
   }, [id]);
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/users`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setCompareUser(data);
+      })
+      .catch((err) => console.log(err));
+  },[]);
+
   function editPost(user) {
     fetch(`http://localhost:5000/users/${user.id}`, {
       method: "PATCH",
@@ -57,7 +74,7 @@ const User = () => {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        setUser(data);
+        setUser({data});
         navigate(`/info/${user.id}`, { state: user });
       })
       .catch((err) => console.log(err));
@@ -100,22 +117,31 @@ const User = () => {
 
     setUser({ ...user, email: e.target.value });
 
+    const emailExists = compareUser.find(user => user.email == e.target.value)
+
     if (!regEx.test(user.email) || user.email == "") {
       setMsg({ ...msg, email: "Insira um email válido!" });
       setVerify({ ...verify, email: false });
-    } else {
+    }else if(emailExists && emailExists.id !== user.id){
+      setMsg({ ...msg, email: "Este email já existe!" });
+      setVerify({ ...verify, email: false });
+    }else{
       setMsg({ ...msg, email: "" });
       setVerify({ ...verify, email: true });
     }
-  }
 
+  }
   function phoneValidate(e) {
     setUser({ ...user, phone: e.target.value });
+    const phoneExists = compareUser.find(user => user.phone == e.target.value)
 
     if (user.phone.length < 10 || user.phone == "") {
       setMsg({ ...msg, phone: "Insira um número de telefone válido!" });
       setVerify({ ...verify, phone: false });
-    } else {
+    } else if(phoneExists && phoneExists.id !== user.id){
+      setMsg({ ...msg, phone: "Este número de telefone já existe!" });
+      setVerify({ ...verify, phone: false });
+    }else {
       setMsg({ ...msg, phone: "" });
       setVerify({ ...verify, phone: true });
     }
