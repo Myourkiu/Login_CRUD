@@ -63,7 +63,9 @@ const ContactInfo = ({ formData, setFormData }) => {
         value={formData.email}
         onChange={emailValidate}/>
       </div>
-      <p>{msg.email}</p>
+      <div className="error-msg">
+        <p>{msg.email}</p>
+      </div>
       <div className="info">
         <FaPhone/>
         <MaskedInput 
@@ -73,7 +75,9 @@ const ContactInfo = ({ formData, setFormData }) => {
         onChange={phoneValidate}
         />
       </div>
-      <p>{msg.phone}</p>
+      <div className="error-msg">
+        <p>{msg.phone}</p>
+      </div>
       </form>
     </div>
   )

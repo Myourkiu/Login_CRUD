@@ -1,0 +1,51 @@
+@use '../mixins'
+@use '../variables'
+    
+.container form
+    width: 380px
+    height: 300px
+    border-radius: 8px
+    background: variables.$card-color
+
+.container .info
+    display: flex
+    justify-content: center
+
+.container form h1
+    text-align: center
+    color: #00ff88
+    letter-spacing: 1px
+    padding: 10px
+
+.container form input
+    @include mixins.inputs
+    width: 70%
+
+    &:focus
+        outline: 1px solid #00bb64
+
+    &::placeholder
+        color: #f0ffff94
+        font-size: .9rem
+
+.container form svg
+    @include mixins.svg
+
+.container .btn-area
+    display: flex
+    justify-content: center
+    margin-top: 8px
+
+.container button
+    @include mixins.button
+    width: 8rem
+
+.container .form-container .error-msg
+    width: 80%
+    display: flex
+    margin: 0 auto
+
+.container .form-container .error-msg p
+    @include mixins.msg
+    width: 100%
+    margin-left: 14px

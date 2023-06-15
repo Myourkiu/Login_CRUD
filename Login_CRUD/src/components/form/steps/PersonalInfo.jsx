@@ -38,7 +38,9 @@ const PersonalInfo = ({ formData, setFormData}) => {
         value={formData.firstName}
         onChange={nameValidate}/>
       </div>
-      <p>{msgName}</p>
+      <div className="error-msg">
+        <p>{msgName}</p>
+      </div>
       <div className="info">
         <FaRegUser/>
         <input type="text" 
@@ -46,7 +48,9 @@ const PersonalInfo = ({ formData, setFormData}) => {
         value={formData.lastName}
         onChange={lastNameValidate}/>
       </div>
-      <p>{msgLastName}</p>
+      <div className="error-msg">
+        <p>{msgLastName}</p>
+      </div>
       </form>
     </div>
   )

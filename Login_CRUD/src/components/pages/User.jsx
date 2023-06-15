@@ -1,12 +1,14 @@
 import "../../styles/components/user.sass";
 
-import { FaRegUser, FaAt, FaPhone } from "react-icons/fa";
+import { FaRegUser, FaAt, FaPhone, FaLock } from "react-icons/fa";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import bcrypt from 'bcryptjs'
 
 import MaskedInput from "../form/MaskedInput";
+import Modal from "../Modal";
 
 const User = () => {
   const { id } = useParams();
@@ -28,13 +30,17 @@ const User = () => {
     lastName: "",
     email: "",
     phone: "",
+    password: "",
   });
   const [verify, setVerify] = useState({
     firstName: true,
     lastName: true,
     email: true,
     phone: true,
+    password: false
   });
+
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/users/${id}`, {
@@ -62,7 +68,7 @@ const User = () => {
         setCompareUser(data);
       })
       .catch((err) => console.log(err));
-  },[]);
+  }, []);
 
   function editPost(user) {
     fetch(`http://localhost:5000/users/${user.id}`, {
@@ -74,7 +80,7 @@ const User = () => {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        setUser({data});
+        setUser({ data });
         navigate(`/info/${user.id}`, { state: user });
       })
       .catch((err) => console.log(err));
@@ -117,45 +123,70 @@ const User = () => {
 
     setUser({ ...user, email: e.target.value });
 
-    const emailExists = compareUser.find(user => user.email == e.target.value)
+    const emailExists = compareUser.find(
+      (user) => user.email == e.target.value
+    );
 
-    if (!regEx.test(user.email) || user.email == "") {
+    if (!regEx.test(user.email) || e.target.value == "") {
       setMsg({ ...msg, email: "Insira um email válido!" });
       setVerify({ ...verify, email: false });
-    }else if(emailExists && emailExists.id !== user.id){
+    } else if (emailExists && emailExists.id !== user.id) {
       setMsg({ ...msg, email: "Este email já existe!" });
       setVerify({ ...verify, email: false });
-    }else{
+    } else {
       setMsg({ ...msg, email: "" });
       setVerify({ ...verify, email: true });
     }
-
   }
   function phoneValidate(e) {
     setUser({ ...user, phone: e.target.value });
-    const phoneExists = compareUser.find(user => user.phone == e.target.value)
+    const phoneExists = compareUser.find(
+      (user) => user.phone == e.target.value
+    );
 
     if (user.phone.length < 10 || user.phone == "") {
       setMsg({ ...msg, phone: "Insira um número de telefone válido!" });
       setVerify({ ...verify, phone: false });
-    } else if(phoneExists && phoneExists.id !== user.id){
+    } else if (phoneExists && phoneExists.id !== user.id) {
       setMsg({ ...msg, phone: "Este número de telefone já existe!" });
       setVerify({ ...verify, phone: false });
-    }else {
+    } else {
       setMsg({ ...msg, phone: "" });
       setVerify({ ...verify, phone: true });
     }
   }
 
+  function passwordValidate(e) {
+    bcrypt.compare(e.target.value, user.password, function(err, isMatch){
+      if(err){
+        console.log(err)
+      }else if(!isMatch){
+        setMsg({...msg, password: 'Senha incorreta!'})
+      }else{
+        setMsg({...msg, password: ''})
+        setVerify({...verify, password: true})
+      }
+    })
+  }
+
+  function passwordButtonValidate(e) {
+    e.preventDefault()
+    if(verify.password == false){
+      return
+    }else{
+      setMsg({...msg, password: ''})
+      navigate(`/user/${user.id}/edit/password`)
+    }
+  }
+
   function validateEdit(e) {
     e.preventDefault();
-
     if (
-      verify.firstName === true && 
-      verify.lastName === true && 
-      verify.email === true && 
+      verify.firstName === true &&
+      verify.lastName === true &&
+      verify.email === true &&
       verify.phone === true
-    ){
+    ) {
       editPost(user);
     }
   }
@@ -178,7 +209,9 @@ const User = () => {
               onChange={firstNameValidate}
             />
           </div>
-          <p>{msg.firstName}</p>
+          <div className="error-msg">
+            <p>{msg.firstName}</p>
+          </div>
           <div className="info">
             <FaRegUser />
             <input
@@ -188,17 +221,25 @@ const User = () => {
               onChange={lastNameValidate}
             />
           </div>
-          <p>{msg.lastName}</p>
+          <div className="error-msg">
+            <p>{msg.lastName}</p>
+          </div>
           <div className="info">
             <FaAt />
             <input
               type="email"
               placeholder="Email"
               value={user.email}
+              onPaste={(e) => {
+                e.preventDefault();
+                return false;
+              }}
               onChange={emailValidate}
             />
           </div>
-          <p>{msg.email}</p>
+          <div className="error-msg">
+            <p>{msg.email}</p>
+          </div>
           <div className="info">
             <FaPhone />
             <MaskedInput
@@ -207,10 +248,52 @@ const User = () => {
               onChange={phoneValidate}
             />
           </div>
-          <p>{msg.phone}</p>
+          <div className="error-msg">
+            <p>{msg.phone}</p>
+          </div>
+
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+              setOpenModal(true);
+            }}
+          >
+            Alterar senha?
+          </a>
 
           <button onClick={validateEdit}>Concluir edição</button>
         </form>
+        <Modal isOpen={openModal}>
+          <p className="password-title">Digite sua senha atual:</p>
+          <div className="info-container">
+            <form className="modal-form">
+              <div className="info">
+                <FaLock />
+                <input 
+                type="password" 
+                placeholder="Insira sua senha atual" 
+                onChange={passwordValidate}/>
+              </div>
+              <p className="error-msg">{msg.password}</p>
+
+              <div className="btn-area">
+                <button
+                  className="btn-back"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpenModal(!openModal);
+                  }}
+                >
+                  Voltar
+                </button>
+                <button 
+                className="btn-password" onClick={passwordButtonValidate}>
+                  Concluir
+                </button>
+              </div>
+            </form>
+          </div>
+        </Modal>
       </div>
     </div>
   );

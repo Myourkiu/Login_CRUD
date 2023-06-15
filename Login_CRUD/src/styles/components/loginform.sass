@@ -21,7 +21,7 @@
     width: 40vw
 
 .right-login
-    width: 50vw
+    width: clamp(400px, 600px, 50vw)
     height: 100vh
     @include mixins.center
     flex-direction: column
@@ -70,6 +70,12 @@
     @include mixins.button
     width: 80%
     margin-bottom: .3rem
+
+.form  .error-msg
+    width: 100%
+    display: flex
+    margin: 0 auto
+    margin-left: 17px
 
 .form p
     @include mixins.msg

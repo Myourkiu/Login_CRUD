@@ -38,7 +38,9 @@ const PassCreate = ({ formData, setFormData }) => {
                 onChange={passwordValidate}
                  />
         </div>
-        <p>{msgPass}</p>
+        <div className="error-msg">
+          <p>{msgPass}</p>
+        </div>
         <div className='info'>
           <FaLock/>
         <input type="password" 
@@ -50,7 +52,9 @@ const PassCreate = ({ formData, setFormData }) => {
         onChange={confirmValidate}
         />
         </div>
-        <p>{msgConfirm}</p>
+        <div className="error-msg">
+          <p>{msgConfirm}</p>
+        </div>
       </form>
     </div>
   )

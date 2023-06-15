@@ -41,7 +41,9 @@ const LoginForm = () => {
         
         if(formData.email == ''){
           setMsgEmail('Preencha este campo')
-        }
+        }else if(user == undefined){
+          setMsgEmail('O email não existe!')
+        }else {setMsgEmail('')}
         
         if(formData.password == ''){
           setMsgPassword('Preencha este campo')
@@ -59,9 +61,7 @@ const LoginForm = () => {
           })
         }
 
-        if(user == undefined){
-          setMsgEmail('O email não existe!')
-        }else {setMsgEmail('')}
+        
       }
     }
 
@@ -86,7 +86,9 @@ const LoginForm = () => {
                
             </div>
             
-            <p>{msgEmail}</p>
+            <div className="error-msg">
+              <p>{msgEmail}</p>
+            </div>
 
             <div className="info">
               <FaLock/>
@@ -96,7 +98,9 @@ const LoginForm = () => {
               value={formData.password}
               />
             </div>
-            <p>{msgPassword}</p>
+            <div className="error-msg">
+              <p>{msgPassword}</p>
+            </div>
 
             <Link to='/register'>Não possui uma conta? Registre-se</Link>
 

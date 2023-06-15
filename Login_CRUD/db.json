@@ -5,7 +5,7 @@
       "lastName": "Figueiredo",
       "email": "pedro@gmail.com",
       "phone": "21987883398",
-      "password": "$2a$10$Pj/1Vy2UGmNp3PN1nfxaE.9WE8pmfaOWttxTI9LA4bWopW8.Oo2uG",
+      "password": "$2a$10$7mxhNqD/l2QZn87nvidcVeNHRATk2nzDFZVFmVj/SsxUdasDqlJLi",
       "id": 1
     },
     {
@@ -15,6 +15,14 @@
       "phone": "21987883397",
       "password": "$2a$10$9Ck3XPxDwTpsqtVHaVB7NeOQBlZJD4csrJAaJ/hWPun.D7PM6hq5.",
       "id": 2
+    },
+    {
+      "firstName": "Manuela",
+      "lastName": "Figueiredo",
+      "email": "manuela@gmail.com",
+      "phone": "21987665655",
+      "password": "$2a$10$TDCTWv1P58BnGY85efBEBuPohLGu7plTU.M5cWvZR1.mp66bDaAIu",
+      "id": 3
     }
   ]
 }
